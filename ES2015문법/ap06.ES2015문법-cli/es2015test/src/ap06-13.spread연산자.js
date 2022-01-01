@@ -19,3 +19,29 @@
     iterator를 생성해서 next()로 순회할 수 있는 자료구조가 이터러블
 
 */
+
+const cites = ['서울', '부산', '제주'];
+console.log(cites[0], cites[1], cites[2]); /// 서울부산제주
+console.log(...cites); /// 서울부산제주
+
+const east = ['U', 'K', 'T'];
+const west = ['N', 'C', 'G'];
+
+// east 와 west 를 결합하여 배열을 만드시오
+const countries = [].concat(east).concat(west);
+console.log(countries);
+
+const countries2 = [...east, ...west];
+console.log(countries2);
+
+const lakes = ['경포호', '화진포', '송지호', '청초호'];
+const [first, ...rest] = lakes;
+console.log([first, ...rest]);
+console.log(first);
+console.log(rest);
+
+
+/// rest 연산자 = spread 연산자
+const [city1, ...cityrest] = [...east, ...west];
+console.log(cityrest);
+
