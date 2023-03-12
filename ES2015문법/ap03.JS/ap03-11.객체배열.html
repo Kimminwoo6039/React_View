@@ -156,8 +156,9 @@
   ]
 
   objarrayMap = objarrayFileter1.map((value, index, array) => {
-    debugger;
+    // debugger;
     return objarrayFileter1[index] = { text: value.text, value: value.value, no: index };
+    // return value.no = index;  // 이것도 가능 배열에 없기때문에
   });
 
   console.log(objarrayMap);
@@ -168,19 +169,26 @@
   //    ABD 가 출력
   const values = [];
 
-  map = objarrayMap.map((value, index, array) => {
+  const map = objarrayMap.map((value, index, array) => {
     // console.log(value.value);
-    return values[index] = { value: value.value };
+    // return values[index] = { value: value.value };
+    return value.value; // 같은  결과
   });
 
-  console.log(values);
+  // map = {a,b,c}
+
+  console.log(map);
+
+  console.log(map.join(''));
 
 
-  reduce = values.reduce((pvalue, cvalue, index, array) => {
+  reduce = map.reduce((pvalue, cvalue, index, array) => {
     // console.log(pvalue.value);
     // console.log(cvalue.value);
-
-    return pvalue + cvalue.value;
+    // 1st = > '' + 'A'
+    // 2st = > 'A' + 'B'
+    // 3st = > 'AB' + 'C'
+    return pvalue + cvalue;
   }, "");
 
   console.log(reduce);
@@ -190,10 +198,20 @@
 
 
 
-//objarray 에서 filter 메서드를 사용하여 value가 "D" 인 요소만 들어 있는 배열을 만들고 출력하시오
-//
-//
+  //objarray 에서 filter 메서드를 사용하여 value가 "D" 인 요소만 들어 있는 배열을 만들고 출력하시오
+  //
+  //
 
+  result = objarray.filter((value, index, array) => {
+
+    if (value.value == "D") {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  console.log(result);
 
 
 
