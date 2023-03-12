@@ -349,39 +349,56 @@
 
 
 
-//  RCUD: Update.수정
-//foo 객체에 name 값을 "bar" 로 바꾸시오
-//foo 객체의 name 값을 console.log()로 출력하시오
-//
-//
-//
-//
-//  RCUD: Delete.삭제
-//객체에서 프로퍼티(속성)을 삭제하려면 delete 연산자를 사용한다.
-//
-//
-//  delete foo.age;
-//  delete foo.gender;
-//  console.log(foo.age);
-//  console.log(foo.gender);
-//
-//
-//  문제1.다음의 그림을 자바스크립트 객체로 만드시오
-//
-//
-//
-//
-//
-//  문제2.다음의 표를 자바스크립트 객체로 만드시오
-//키	값
-//이름	Nature of Code
-//가격	30000
-//저자	다니엘
-//ISBN	9788968481901
-//페이지수	620페이지
-//
-//
+  //  RCUD: Update.수정
+  //foo 객체에 name 값을 "bar" 로 바꾸시오
+  //foo 객체의 name 값을 console.log()로 출력하시오
 
+  foo.name = "bar";
+  console.log(foo.name);
+
+
+
+  //  RCUD: Delete.삭제
+  //객체에서 프로퍼티(속성)을 삭제하려면 delete 연산자를 사용한다.
+  //
+  //
+  delete foo.age;
+  delete foo.gender;
+  console.log(foo.age);
+  console.log(foo.gender);
+  //
+  //
+  //  문제1.다음의 그림을 자바스크립트 객체로 만드시오
+
+  const dog = {
+    name: "Fido",
+    weight: 40,
+    breed: "Mixed",
+    loves: ["walks", "fetching balls"],
+  }
+
+  console.log(dog);
+
+
+
+  //  문제2.다음의 표를 자바스크립트 객체로 만드시오
+  //키	값
+  //이름	Nature of Code
+  //가격	30000
+  //저자	다니엘
+  //ISBN	9788968481901
+  //페이지수	620페이지
+  //
+  //
+  const test = {
+    "이름": "Nature of Code",
+    "가격": 30000,
+    "저자": "다니엘",
+    "ISBN": "	9788968481901",
+    "페이지수": "620페이지",
+  }
+
+  console.log(test);
 
 
 </script>
