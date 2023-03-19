@@ -1,8 +1,4 @@
 /*
-  CommonJS 모듈 방식 : require 사용
-    var module = require('./MyModule');
-
-
   ES2015 모듈 방식 : import/export 사용
     import React from "redux";
     import {Component} from "redux";
@@ -12,3 +8,9 @@
 */
 
 // Module2.js
+
+import b, { a, c } from './Module1.js';
+debugger;
+console.log(a);
+console.log(b);
+console.log(c);
