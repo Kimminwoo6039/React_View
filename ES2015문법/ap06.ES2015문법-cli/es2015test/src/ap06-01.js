@@ -8,5 +8,5 @@ const getMessage = (params) => {
 };
 getMessage('sejoong');
 
-const str = 'aaaaa';
+const str = 'aaaa';
 console.log(str);
