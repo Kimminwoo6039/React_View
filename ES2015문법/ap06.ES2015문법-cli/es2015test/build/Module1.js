@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23,3 +24,14 @@ exports.c = c;
 // exprot default 변수는 한번만 사용해서 파일을 내보냄
 var _default = b; // > import b;
 exports["default"] = _default;
+=======
+/*
+
+  export ������ �Լ��� ������ �� ����Ѵ�.
+  export ���Ͽ��� ���� �� ��� �����ϴ�.
+
+  exprot default ������ �Լ��� ������ �� ����Ѵ�.
+  export default �� ���Ͽ��� �� ���� ��� �����ϴ�.
+*/
+"use strict";
+>>>>>>> 19475d10834eefe3353f4c3f11780f469b29ba7b
