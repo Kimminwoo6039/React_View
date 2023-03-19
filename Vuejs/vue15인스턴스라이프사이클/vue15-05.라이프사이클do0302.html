@@ -39,8 +39,50 @@
     <div id="app">
       {{ message }}
       <!-- 버튼 기능 추가-->
+      <button v-on:click="btnClick">Vue 버튼</button>
 
     </div>
 
   </body>
 </html>
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+  new Vue({
+    /* edtmc^2w */
+    el: '#app',
+    data: {
+      /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+      message: 'Hello vue!',
+    },
+    methods: {
+      /* 이벤트 핸들러 등록 + 일반 함수 */
+      btnClick(e) {
+        console.log(e.target);
+        this.$data.message = "변경하기@@@@@@@@@@@@@@@@@@@@@@@" + new Date().toLocaleTimeString();
+      }
+    },
+
+    beforeCreate() {
+      console.log("beforeCreate");
+    },
+    created() {
+      console.log("create");
+    },
+    beforeMount() {
+      console.log("beforeMount");
+    },
+    mounted() {
+      console.log("mounted");
+    },
+    beforUpdateted() {
+      console.log("beforUpdateted");
+    },
+    updated() {
+      console.log("updated");
+    },
+  });
+
+</script>
