@@ -353,19 +353,91 @@
     methods: {
       /* 이벤트 핸들러 등록 + 일반 함수 */
       addTodo(e) {
-        console.log(e.target);
+
+        if (this.$data.newTodoItem && this.$data.newTodoItem.trim()) {
+          // debugger;
+          // let idx = this.$data.todoItems.length;
+          // console.log(idx);
+          // let id = this.$data.todoItems[idx - 1].id;
+          // this.$data.todoItems.push({ id: id + 1, todo: this.$data.newTodoItem, done: false })
+
+
+
+          const ids = this.$data.todoItems.map((value, index, array) => {
+            return value.id;
+          });
+
+          const maxid = ids.reduce((pvalue, cvalue, index, array) => {
+
+            if (pvalue > cvalue)
+              return pvalue;
+            else
+              return cvalue;
+          });
+          console.log(maxid);
+
+          const newitem = {
+            id: maxid + 1,
+            todo: this.$data.newTodoItem,
+            done: false,
+          }
+
+          // 배열 복제 후 할당
+          this.$data.todoItems = [...this.$data.todoItems, newitem];
+
+          this.$data.newTodoItem = '';
+
+        } else {
+          this.$data.showModal = true;
+        }
+
+
+
+
+
       },
       checked(done) {
+        // debugger;
         // todoItem.done ? 'checked' : null
+        if (done) {
+          return "checked"
+        } else {
+          return null;
+        }
       },
       doneToggle(id) {
-        console.log(id);
+
+        const newitems = this.$data.todoItems.map((value, index, array) => {
+          if (value.id === id) {
+            value.done = !value.done;
+          }
+
+          return value;
+        });
+        this.$data.todoItems = newitems;
+        // debugger;
+        // var abc = this.$data.todoItems[id]
+        // console.log(abc);
+        // console.log(id);
+        // id = id - 1;
+        // this.$data.todoItems[id].done = !this.$data.todoItems[id].done;
       },
       removeTodo(id) {
-        console.log(id);
+        // debugger;
+        const newitems = this.$data.todoItems.filter((value, index, array) => {
+          if (value.id === id) {
+            console.log("삭제");
+            return false;
+          } else {
+            return true;
+          }
+        });
+        this.$data.todoItems = newitems;
       },
       clearAll(e) {
+        // debugger;
         console.log(e.target);
+        this.$data.todoItems = [];
       }
 
 
