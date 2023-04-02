@@ -1,29 +1,18 @@
-<style scoped>
-.component-parent {
-  width: 50%;
-  background-color: lightblue;
-  padding: 5%;
-}
-
-.component-child {
-  width: 80%;
-  background-color: lightgray;
-  padding: 5% 5% 10% 0;
-}
-</style>
+<style scoped></style>
 
 <template>
   <div id="app">
-    <Vue34exParent></Vue34exParent>
-    <!-- <Vue34exChild></Vue34exChild> -->
+    <h2>vuex 를 사용하는 프로그램을 만들어 본다.</h2>
+    <Vue4301Comp></Vue4301Comp>
   </div>
 </template>
 
 <script>
 // vuex 라이브러리에서 mapActions, mapMutations, mapState, mapGetters 함를 가져옵니다.
 // import { mapActions, mapMutations, mapState, mapGetters } from 'vuex';
-import Vue34exChild from '../components/vue34ex/Vue34exChild.vue';
-import Vue34exParent from '../components/vue34ex/Vue34exParent.vue';
+
+import Vue4301Comp from '../components/vue4301/Vue4301Comp.vue';
+
 export default {
   /* pdtmc^2w */
   props: [],
@@ -45,8 +34,7 @@ export default {
       */
   },
   components: {
-    // Vue34exChild: Vue34exChild,
-    Vue34exParent: Vue34exParent,
+    Vue4301Comp: Vue4301Comp,
     /* 전역 컴포넌트인 경우는 등록하지 않는다. 전역 컴포넌트는 프로토타입 체인으로 찾을 수 있기 때문에 */
     /* 지역 컴포넌트나 파일 컴포넌트만 등록 한다. 예시) "태그명" : 컴포넌트명 */
   },

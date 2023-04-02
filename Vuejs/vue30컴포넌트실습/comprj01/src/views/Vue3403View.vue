@@ -26,7 +26,7 @@ export default {
   methods: {
     printText(param1, param2) {
       console.log(param1, param2);
-      this.$data.mesg = param1;
+      this.$data.mesg = `${param1},${param2}`;
     },
     /* 이벤트 핸들러 등록 + 일반 함수 */
     /* vuex 를 사용하는 경우

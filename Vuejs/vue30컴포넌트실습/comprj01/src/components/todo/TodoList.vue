@@ -1,38 +1,115 @@
 <style scoped>
-.component-parent {
-  width: 50%;
-  background-color: lightblue;
-  padding: 5%;
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+  margin-top: 0;
+  text-align: left;
 }
 
-.component-child {
-  width: 80%;
-  background-color: lightgray;
-  padding: 5% 5% 10% 0;
+li {
+  display: flex;
+  min-height: 50px;
+  height: 50px;
+  line-height: 50px;
+  margin: 0.5rem 0;
+  padding: 0 0.9rem;
+  background: white;
+  border-radius: 5px;
+}
+
+li.checked {
+  background: #bbb;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+.checkBtn {
+  line-height: 45px;
+  color: #62acde;
+  margin-right: 5px;
+}
+
+.removeBtn {
+  margin-left: auto;
+  color: #de4343;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+}
+
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>
 
 <template>
-  <div id="app">
-    <Vue34exParent></Vue34exParent>
-    <!-- <Vue34exChild></Vue34exChild> -->
-  </div>
+  <section>
+    <ul>
+      <li
+        v-for="todoItem in todoItems"
+        v-bind:key="todoItem.id"
+        v-bind:class="checked(todoItem.done)"
+        v-on:click="(e) => doneToggle(e, todoItem)"
+      >
+        <i aria-hidden="true" class="checkBtn fas fa-check"></i>
+        {{ todoItem.todo }}
+        <span
+          type="button"
+          class="removeBtn"
+          v-on:click.stop="(e) => removeTodo(e, todoItem)"
+        >
+          <i aria-hidden="true" class="far fa-trash-alt"></i>
+        </span>
+      </li>
+    </ul>
+  </section>
 </template>
 
 <script>
 // vuex 라이브러리에서 mapActions, mapMutations, mapState, mapGetters 함를 가져옵니다.
 // import { mapActions, mapMutations, mapState, mapGetters } from 'vuex';
-import Vue34exChild from '../components/vue34ex/Vue34exChild.vue';
-import Vue34exParent from '../components/vue34ex/Vue34exParent.vue';
+
 export default {
   /* pdtmc^2w */
-  props: [],
+  props: ['todoItems'],
   data() {
     /* 컴포넌트 안에서 사용되는 변수 등록. 개별 변수 */
     return {};
   },
   //template: ``,
   methods: {
+    checked(done) {
+      // debugger;
+      // todoItem.done ? 'checked' : null
+      if (done) {
+        return 'checked';
+      } else {
+        return null;
+      }
+    },
+    removeTodo(e, todoItem) {
+      debugger;
+      console.log(todoItem);
+
+      // 부모 컴포넌트 이동 $emit 발생시켜라
+      this.$emit('removeTodo', todoItem);
+
+      // 이벤트 취소
+      e.preventDefault();
+    },
+    doneToggle(e, todoItem) {
+      console.log(todoItem);
+      debugger;
+      // 부모 컴포넌트 이동 $emit 발생시켜라
+      this.$emit('doneToggle', todoItem);
+
+      // 이벤트 취소
+      e.preventDefault();
+    },
     /* 이벤트 핸들러 등록 + 일반 함수 */
     /* vuex 를 사용하는 경우
       mapActions 는 store의 actions 를 가져오는 헬퍼 메서드입니다.
@@ -45,8 +122,6 @@ export default {
       */
   },
   components: {
-    // Vue34exChild: Vue34exChild,
-    Vue34exParent: Vue34exParent,
     /* 전역 컴포넌트인 경우는 등록하지 않는다. 전역 컴포넌트는 프로토타입 체인으로 찾을 수 있기 때문에 */
     /* 지역 컴포넌트나 파일 컴포넌트만 등록 한다. 예시) "태그명" : 컴포넌트명 */
   },

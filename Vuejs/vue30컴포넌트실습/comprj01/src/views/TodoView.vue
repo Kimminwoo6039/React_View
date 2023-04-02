@@ -1,38 +1,97 @@
 <style scoped>
-.component-parent {
-  width: 50%;
-  background-color: lightblue;
-  padding: 5%;
+* {
+  box-sizing: border-box;
 }
 
-.component-child {
-  width: 80%;
-  background-color: lightgray;
-  padding: 5% 5% 10% 0;
+body {
+  text-align: center;
+  background-color: #f6f6f8;
 }
 </style>
 
 <template>
   <div id="app">
-    <Vue34exParent></Vue34exParent>
-    <!-- <Vue34exChild></Vue34exChild> -->
+    <TodoHeader></TodoHeader>
+    <!-- TodoInput -->
+    <TodoInput v-on:addTodo="addTodo"></TodoInput>
+    <!-- TodoList -->
+    <!-- "checked(todoItem.done)"  <==> "todoItem.done ? 'checked': null "  -->
+    <TodoList
+      v-on:removeTodo="removeTodo"
+      v-on:doneToggle="doneToggle"
+      v-bind:todoItems="todoItems"
+    ></TodoList>
+
+    <!-- TodoFooter -->
+    <TodoFooter v-on:clearAll="clearAll"></TodoFooter>
   </div>
 </template>
 
 <script>
 // vuex 라이브러리에서 mapActions, mapMutations, mapState, mapGetters 함를 가져옵니다.
 // import { mapActions, mapMutations, mapState, mapGetters } from 'vuex';
-import Vue34exChild from '../components/vue34ex/Vue34exChild.vue';
-import Vue34exParent from '../components/vue34ex/Vue34exParent.vue';
+
+import TodoHeader from '../components/todo/TodoHeader.vue';
+import TodoFooter from '../components/todo/TodoFooter.vue';
+import TodoInput from '../components/todo/TodoInput.vue';
+import TodoList from '../components/todo/TodoList.vue';
 export default {
   /* pdtmc^2w */
   props: [],
   data() {
     /* 컴포넌트 안에서 사용되는 변수 등록. 개별 변수 */
-    return {};
+    return {
+      todoItems: [
+        { id: 1, todo: '영화보기', done: false },
+        { id: 2, todo: '주말 산책', done: true },
+        { id: 3, todo: 'ES6 학습', done: false },
+        { id: 4, todo: '잠실 야구장', done: false },
+      ],
+    };
   },
   //template: ``,
   methods: {
+    clearAll(e) {
+      debugger;
+      console.log(e.target);
+      this.$data.todoItems = [];
+    },
+    addTodo(e) {
+      debugger;
+      console.log(e.target);
+    },
+    removeTodo(e) {
+      debugger;
+      console.log(e.target);
+
+      // e === todoItem
+      // 복제후 할당
+
+      const newitems = this.$data.todoItems.filter((value) => {
+        if (value.id === e.id) {
+          console.log('삭제');
+          return false;
+        } else {
+          return true;
+        }
+      });
+      this.$data.todoItems = newitems;
+    },
+    doneToggle(e) {
+      debugger;
+      console.log(e);
+
+      // e === todoItem
+      // 복제후 할당
+      const newitems = this.$data.todoItems.map((item) => {
+        if (item.id === e.id) {
+          item.done = !item.done;
+        }
+
+        return item;
+      });
+      this.$data.todoItems = newitems;
+    },
     /* 이벤트 핸들러 등록 + 일반 함수 */
     /* vuex 를 사용하는 경우
       mapActions 는 store의 actions 를 가져오는 헬퍼 메서드입니다.
@@ -45,8 +104,10 @@ export default {
       */
   },
   components: {
-    // Vue34exChild: Vue34exChild,
-    Vue34exParent: Vue34exParent,
+    TodoHeader: TodoHeader,
+    TodoFooter: TodoFooter,
+    TodoInput: TodoInput,
+    TodoList: TodoList,
     /* 전역 컴포넌트인 경우는 등록하지 않는다. 전역 컴포넌트는 프로토타입 체인으로 찾을 수 있기 때문에 */
     /* 지역 컴포넌트나 파일 컴포넌트만 등록 한다. 예시) "태그명" : 컴포넌트명 */
   },
