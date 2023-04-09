@@ -40,8 +40,27 @@ console.log([first, ...rest]);
 console.log(first);
 console.log(rest);
 
-
 /// rest 연산자 = spread 연산자
 const [city1, ...cityrest] = [...east, ...west];
 console.log(cityrest);
 
+const moring = {
+  breacfast: '미역국',
+  lunch: '삼치구이',
+};
+
+const dinner = '스테이크';
+
+const mealse = {
+  ...moring,
+  dinner,
+};
+
+console.log(mealse);
+
+function childComponet(...props) {
+  console.log(props);
+}
+
+const message = 'passd';
+childComponet(...message);

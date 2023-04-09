@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 "use strict";
 
-=======
->>>>>>> 19475d10834eefe3353f4c3f11780f469b29ba7b
 /*
 
   ES2015의 template literal( 백틱, ` ) 에 대해서 알아본다.
@@ -10,7 +7,6 @@
   1. 다중 문자열 만들 때
   2. 변수 치환
 */
-<<<<<<< HEAD
 
 var string1 = '안녕하세요';
 var string2 = '반갑습니다';
@@ -34,6 +30,3 @@ console.log(message1);
 // Es2015
 var message2 = "Hello ".concat(student.name, " from ").concat(student.city);
 console.log(message2);
-=======
-"use strict";
->>>>>>> 19475d10834eefe3353f4c3f11780f469b29ba7b

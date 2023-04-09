@@ -39,3 +39,14 @@ console.log(type1, color1, model1);
 // ES2015 를 사용하여 빼내기
 const { type, color, model, gear } = car;
 console.log(type, color, model, gear);
+
+// 함수의 매개변수로 분해할당 방식을 사용해본다.
+const func2 = (car) => {
+  // const type = car.type;
+  // const color = car.color;
+
+  const { type, color } = car;
+
+  console.log(type, color);
+};
+func2(car);
