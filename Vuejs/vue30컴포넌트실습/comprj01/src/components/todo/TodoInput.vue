@@ -129,16 +129,23 @@ export default {
   props: [],
   data() {
     /* 컴포넌트 안에서 사용되는 변수 등록. 개별 변수 */
-    return {};
+    return {
+      newTodoItem: null,
+    };
   },
   //template: ``,
   methods: {
     addTodo(e) {
-      debugger;
+      // debugger;
       console.log(e.target);
+      if (this.$data.newTodoItem && this.$data.newTodoItem.trim()) {
+        this.$emit('addTodo', e, this.$data.newTodoItem);
 
-      this.$emit('addTodo', 'zz');
-
+        this.$data.newTodoItem = '';
+      } else {
+        /// 할일
+        alert('빈내용입니다');
+      }
       // 부모 컴포넌트 이동 $emit 발생시켜라
     },
     /* 이벤트 핸들러 등록 + 일반 함수 */

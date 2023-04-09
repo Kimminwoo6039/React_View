@@ -35,6 +35,7 @@ import TodoHeader from '../components/todo/TodoHeader.vue';
 import TodoFooter from '../components/todo/TodoFooter.vue';
 import TodoInput from '../components/todo/TodoInput.vue';
 import TodoList from '../components/todo/TodoList.vue';
+import { thisExpression } from '@babel/types';
 export default {
   /* pdtmc^2w */
   props: [],
@@ -56,9 +57,29 @@ export default {
       console.log(e.target);
       this.$data.todoItems = [];
     },
-    addTodo(e) {
-      debugger;
+    addTodo(e, newTodoItem) {
+      // debugger;
       console.log(e.target);
+      console.log(newTodoItem);
+
+      const id = this.$data.todoItems.map((value, index, array) => {
+        return value.id;
+      });
+
+      const max = id.reduce((pvalue, cvalue, index, array) => {
+        if (pvalue > cvalue) return pvalue;
+        else return cvalue;
+      });
+
+      console.log(max);
+
+      const newItem = {
+        id: max + 1,
+        todo: newTodoItem,
+        done: false,
+      };
+
+      this.$data.todoItems = [...this.$data.todoItems, newItem];
     },
     removeTodo(e) {
       debugger;
